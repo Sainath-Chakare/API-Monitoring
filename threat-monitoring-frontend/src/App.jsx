@@ -18,12 +18,39 @@ function App() {
 
     try {
       const response = await axios.post('http://localhost:5000/api/log', { ip, url });
+      console.log("Response Data:", response.data); // Log response data
       setResponseData(response.data);
     } catch (err) {
       setError('Error fetching threat data. Please try again.');
     } finally {
       setLoading(false);
     }
+  };
+
+  const parseSummary = (summary) => {
+    if (!summary) return null;
+    const lines = summary.split('\n');
+    const parsedElements = [];
+
+    lines.forEach((line, index) => {
+      if (line.startsWith('## ')) {
+        parsedElements.push(<h3 key={index}>{line.replace('## ', '')}</h3>);
+      } else if (line.startsWith('* ')) {
+        parsedElements.push(<li key={index}>{line.replace('* ', '')}</li>);
+      } else if (line.startsWith('**')) {
+        parsedElements.push(<strong key={index}>{line.replace(/\*\*/g, '')}</strong>);
+      } else if (line.trim() === '') {
+        parsedElements.push(<br key={index} />);
+      } else {
+        parsedElements.push(<p key={index}>{line}</p>);
+      }
+    });
+
+    return (
+      <div className="gemini-summary">
+        {parsedElements}
+      </div>
+    );
   };
 
   return (
@@ -53,14 +80,21 @@ function App() {
         </button>
       </form>
 
-      {/* Display any error message */}
-      {error && <p style={{ color: 'red' }}>{error}</p>}
+      {error && <p className="error">{error}</p>}
 
-      {/* Display response data */}
       {responseData && (
         <div className="response">
           <h2>Threat Analysis Report</h2>
           <p><strong>Threat Level:</strong> {responseData.threatLevel}</p>
+
+          {responseData.geminiSummary ? (
+            <div>
+              <h3>Gemini Summary</h3>
+              {parseSummary(responseData.geminiSummary)}
+            </div>
+          ) : (
+            <p>Gemini summary not available</p>
+          )}
 
           {responseData.ip && (
             <div>

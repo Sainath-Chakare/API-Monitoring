@@ -11,6 +11,7 @@ body {
 }
 
 /* Main App Styling */
+/* Main App Styling */
 .App {
   text-align: center;
   padding: 20px;
@@ -18,8 +19,12 @@ body {
   background-color: #2e2e2e;
   max-width: 600px;
   width: 100%;
+  height: 90vh;
+  overflow-y: auto;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  margin-top: 20px;
 }
+
 
 /* Form Styling */
 form {
@@ -76,10 +81,6 @@ button:hover:enabled {
 }
 
 /* Error Message Styling */
-p {
-  margin: 0;
-}
-
 p.error {
   color: red;
   font-weight: bold;
@@ -107,6 +108,21 @@ p.error {
 
 .response p {
   margin: 5px 0;
+}
+
+.gemini-summary strong {
+  display: block;
+  margin-top: 10px;
+  color: #ddd;
+}
+
+.gemini-summary li {
+  margin-left: 25px;
+  list-style-type: disc;
+}
+
+.gemini-summary br {
+  line-height: 1.5;
 }
 
 /* Link Styling */
