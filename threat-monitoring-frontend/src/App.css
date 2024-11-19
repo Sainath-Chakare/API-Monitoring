@@ -11,7 +11,6 @@ body {
 }
 
 /* Main App Styling */
-/* Main App Styling */
 .App {
   text-align: center;
   padding: 20px;
@@ -24,7 +23,6 @@ body {
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
   margin-top: 20px;
 }
-
 
 /* Form Styling */
 form {
@@ -80,6 +78,42 @@ button:hover:enabled {
   background-color: #0056b3;
 }
 
+/* Button Group Styling */
+.button-group {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  margin: 20px 0;
+}
+
+/* Section Box Styling */
+.section-box {
+  background-color: #383838;
+  padding: 15px;
+  border-radius: 10px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  margin-bottom: 20px;
+  border: 1px solid #555;
+}
+
+/* Section Header Styling */
+.section-header {
+  background-color: #444;
+  color: #fff;
+  padding: 8px 10px;
+  border-radius: 8px;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 15px;
+}
+
+/* Optional Separator Line Styling */
+.separator {
+  border: none;
+  border-top: 3px solid #666;
+  margin: 20px 0;
+}
+
 /* Error Message Styling */
 p.error {
   color: red;
@@ -98,12 +132,9 @@ p.error {
   word-wrap: break-word;
 }
 
-.response h2 {
+/* Other Styling for Headers and Lists */
+.response h2, .response h3 {
   margin-top: 0;
-}
-
-.response h3 {
-  margin-bottom: 10px;
 }
 
 .response p {
